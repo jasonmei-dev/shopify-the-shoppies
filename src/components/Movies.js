@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Movies = ({ movies, text}) => {
+const Movies = ({ movies, text, addNomination, isNominated }) => {
   return (
     movies.length > 0 && (
       <div className="Movies">
@@ -9,7 +9,7 @@ const Movies = ({ movies, text}) => {
           <ul>
             {movies.map(movie => (
               <li key={movie.imdbID}>
-                {movie.Title} ({movie.Year}) {" "} <button onClick={() => console.log('Nominate!')}>Nominate</button>
+                {movie.Title} ({movie.Year}) {" "} <button onClick={() => addNomination(movie)} disabled={isNominated(movie)}>Nominate</button>
               </li>
             ))}
           </ul>
