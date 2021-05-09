@@ -5,13 +5,13 @@ const SearchBar = ({ text, onChange, resetText }) => {
     <div className='SearchBar'>
       <label htmlFor="text">Movie Title </label>
 
-      <div className="bar">
+      <div className="form-container">
         <div className="box">
           <i className="fas fa-search icon"></i>
           <input type="text" name="text" value={text} onChange={onChange}/>
         </div>
 
-        <button className="reset" onClick={resetText}>Reset</button>
+        <button className="reset btn" onClick={resetText}>Reset</button>
       </div>
     </div>
   )

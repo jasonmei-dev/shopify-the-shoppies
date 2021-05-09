@@ -8,7 +8,7 @@ const Movies = ({ movies, text, addNomination, isNominated }) => {
         <ul>
           {movies.map(movie => (
             <li key={movie.imdbID}>
-              {movie.Title} ({movie.Year}) {" "} <button onClick={() => addNomination(movie)} disabled={isNominated(movie)}>Nominate</button>
+              {movie.Title} ({movie.Year}) {" "} <button className="btn" onClick={() => addNomination(movie)} disabled={isNominated(movie)}>Nominate</button>
             </li>
           ))}
         </ul>

@@ -14,6 +14,12 @@ const App = () => {
   const [alert, setAlert] = useState(null);
 
   useEffect(() => {
+    const maxedNominations = () => {
+      if (nominations.length === 5) {
+        showAlert("You reached the max number of nominations!", "success");
+      }
+    }
+
     searchMovies(text);
     maxedNominations();
   }, [text, nominations]);
@@ -22,12 +28,6 @@ const App = () => {
     const res = await axios.get(`https://www.omdbapi.com/?apikey=${process.env.REACT_APP_OMDB_API_KEY}&s=${text}`);
 
     setMovies(res.data.Search || []);
-  }
-
-  const maxedNominations = () => {
-    if (nominations.length === 5) {
-      showAlert("You reached the max number of nominations!", "success");
-    }
   }
 
   const addNomination = movie => {
@@ -54,8 +54,11 @@ const App = () => {
       <h1>The Shoppies</h1>
       <Alert alert={alert} />
       <SearchBar text={text} onChange={(e) => setText(e.target.value)} resetText={() => setText("")} />
-      <Movies movies={movies} text={text} addNomination={addNomination} isNominated={isNominated} />
-      <Nominations nominations={nominations} removeNomination={removeNomination} />
+
+      <div className="flex-container">
+        <Movies movies={movies} text={text} addNomination={addNomination} isNominated={isNominated} />
+        <Nominations nominations={nominations} removeNomination={removeNomination} />
+      </div>
     </div>
   );
 }
