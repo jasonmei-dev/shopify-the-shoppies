@@ -103,19 +103,31 @@ li {
 
 /* Alert */
 .Alert {
-  padding: 0.7rem;
-  /* margin: 1rem 0; */
-  opacity: 0.9;
-  background: var(--light-color);
-  color: #333;
+  padding: 10px 40px;
+  /* opacity: 0.9; */
+  color: var(--secondary-color);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+  animation: slide_down 0.5s;
+}
+
+.Alert .fa-exclamation-circle {
+  font-size: 20px;
 }
 
 .alert-success {
   background: var(--success-color);
-  color: #fff;
 }
 
 .alert-danger {
   background: var(--danger-color);
-  color: #fff;
+}
+
+@keyframes slide_down {
+  0% {
+    transform: translateY(-100%);
+  }
 }
