@@ -14,15 +14,18 @@ const App = () => {
   const [alert, setAlert] = useState(null);
 
   useEffect(() => {
+    searchMovies(text);
+  }, [text]);
+
+  useEffect(() => {
     const maxedNominations = () => {
       if (nominations.length === 5) {
         showAlert("You reached the max number of nominations!", "success");
       }
     }
 
-    searchMovies(text);
     maxedNominations();
-  }, [text, nominations]);
+  }, [nominations]);
 
   const searchMovies = async (text) => {
     const res = await axios.get(`https://www.omdbapi.com/?apikey=${process.env.REACT_APP_OMDB_API_KEY}&s=${text}`);
